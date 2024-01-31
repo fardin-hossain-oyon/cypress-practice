@@ -1,0 +1,28 @@
+--command to initialize project
+
+npm init -y
+
+
+
+--install cypress
+
+npm install cypress
+
+
+
+--see cypress version
+
+npx cypress -v
+
+
+
+--verify cypress installation
+
+npx cypress verify
+
+
+
+--open cypress
+
+npx cypress open
+
