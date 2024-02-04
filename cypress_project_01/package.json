@@ -4,7 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "echo I am in the PRETEST",
+    "posttest": "echo I am in the POSTTEST",
+    "test": "echo \"Error: no test specified\"",
+
+    "pretest-01": "echo This is pretest-01",
+    "posttest-01": "echo This is posttest-01",
+    "test-01": "echo This is just a test",
+
+    "cy-test-01": "cypress run",
+    "cy-test-02": "cypress run --spec ./cypress/e2e/pomdemo.cy.js" 
   },
   "keywords": [],
   "author": "",

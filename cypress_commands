@@ -22,7 +22,103 @@ npx cypress verify
 
 
 
+--see cypress info
+
+npx cypress info
+
+
+
 --open cypress
 
 npx cypress open
+
+
+
+--run cypress tests from command line interface
+
+npx cypress run
+
+npx cypress run --help
+
+
+
+
+
+--run a specific spec file
+
+npx cypress run --spec file_name.cy.js
+
+npx cypress run -s file_name.cy.js
+
+
+
+--run a script specified in the package.json file
+
+npm run script_name
+
+
+
+--how to give cypress configurations in command line
+
+npx cypress run --spec file_name.cy.js --config pageLoadTimeout=100000,watchForFileChanges=false
+
+npx cypress run --spec file_name.cy.js --config '{"pageLoadTimeout":100000, "watchForFileChanges":false}'
+
+
+
+--see latest cypress cache
+
+npx cypress cache
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
