@@ -1,3 +1,6 @@
+/// <reference types="cypress"/>
+
+
 import { LoginPage } from "./pages/login_pages";
 
 const loginPage = new LoginPage()

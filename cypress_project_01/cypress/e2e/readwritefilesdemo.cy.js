@@ -29,6 +29,8 @@ it('Read file using readFile() function', function(){
 it('Write file demo', function(){
     cy.writeFile('sample.txt', 'Hello I am under the water. Please help me. Here very much raining uuuuuuuu');
     cy.writeFile('sample.txt', 'I learnt this stuff rom instagram reels', {flag:'a+'})
+
+    /* if you do not set flag, the file is overwritten by default */
 })
 
 
