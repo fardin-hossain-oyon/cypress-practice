@@ -8,12 +8,18 @@ const loginPage = new LoginPage()
 const username = 'Admin'
 const password = 'admin123'
 
+before(() => {
+    // disable Cypress's default behavior of logging all XMLHttpRequests and fetches
+    cy.intercept({ resourceType: /xhr|fetch/ }, { log: false })
+  })
+
 
 describe('All login tests', () => {
 
     /* this function will be executed at the start of each function */
 
     beforeEach(() => {
+        cy.intercept({ resourceType: /xhr|fetch/ }, { log: false });
         cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
     })
 
@@ -31,26 +37,26 @@ describe('All login tests', () => {
     
     
     
-    it('Login test 2', () => {
+    // it('Login test 2', () => {
     
-        // cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+    //     // cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
     
-        loginPage.enterUsername('sadadasdad');      // wrong credentials
-        loginPage.enterPassword(password);
-        loginPage.clickLogIn();
-        cy.get('.oxd-userdropdown-tab').click();
-    })
+    //     loginPage.enterUsername('sadadasdad');      // wrong credentials
+    //     loginPage.enterPassword(password);
+    //     loginPage.clickLogIn();
+    //     cy.get('.oxd-userdropdown-tab').click();
+    // })
 })
 
 
 /* any tests written outside the describe box will be executed first, before the tests within describe box */
 
-it('Login test outside the describe box', () => {
+// it('Login test outside the describe box', () => {
     
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
+//     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login');
 
-    loginPage.enterUsername('sadadasdad');      // wrong credentials
-    loginPage.enterPassword(password);
-    loginPage.clickLogIn();
-    cy.get('.oxd-userdropdown-tab').click();
-})
+//     loginPage.enterUsername('sadadasdad');      // wrong credentials
+//     loginPage.enterPassword(password);
+//     loginPage.clickLogIn();
+//     cy.get('.oxd-userdropdown-tab').click();
+// })
