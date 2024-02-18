@@ -1,28 +1,7 @@
 /// <reference types="cypress"/>
 
-export class GerDashboardPage{
+export class EvvDashboardPage{
 
-    yearly_radio_locator = '#saw_813213_a_1_o0';
-    monthly_radio_locator = '#saw_813213_a_1_o1';
-
-    from_date_dropdown_locator = '#saw_815317_b_1_dropdownIcon';
-    from_date_option_locator = '[title="06/01/2020"] > .promptMenuOptionText';
-
-    to_date_dropdown_locator = '#saw_815317_c_1_dropdownIcon';
-    to_date_option_locator = '[title="08/31/2022"] > .promptMenuOptionText';
-
-    apply_button_locator = '#gobtn'
-
-    changeAggregationType(aggregationType){
-
-        if(aggregationType === "yearly"){
-            cy.get(this.yearly_radio_locator).click();
-        }
-        else{
-            // cy.get(this.monthly_radio_locator).click();
-            cy.contains('Monthly').click();
-        }
-    }
 
     changeFromDateAndToDate(){
         // cy.get(this.from_date_dropdown_locator).click();
@@ -61,10 +40,7 @@ export class GerDashboardPage{
             // Check if applying select makes sense in this context
             cy.wrap($el).select('Table'); // Apply select to each element
           });
-    }
 
-    applyFilter(){
-        cy.get(this.apply_button_locator).click();
     }
 
 }

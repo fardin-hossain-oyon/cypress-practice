@@ -72,6 +72,9 @@ npx cypress cache
 
 
 
+-- disable logs
+
+CYPRESS_NO_COMMAND_LOG=1 npx cypress open
 
 
 
