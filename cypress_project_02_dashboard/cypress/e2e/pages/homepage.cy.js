@@ -14,7 +14,7 @@ export class HomePage{
 
     selectEVVDashboard(){
         cy.get('#dashboard > .HeaderMenuBarText > span').click();
-        // cy.get('[aria-label="EVV Dashboard for Oversight"]').click();
+        cy.get('[aria-label="EVV Dashboard for Oversight"]').click();
     }
 
     select_case_management_dashboard(){

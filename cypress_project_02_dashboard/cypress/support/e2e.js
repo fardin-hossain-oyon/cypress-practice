@@ -18,3 +18,13 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+// Cypress.on('window:before:unload', (options) => {
+//     const logs = options.get('logs');
+//     logs.forEach((log) => {
+//       if (log.displayName === 'xhr' || log.displayName === 'fetch') {
+//         log.hidden = true;
+//         console.log('Hidden:', log.hidden, log.displayName); // Check the value
+//       }
+//     });
+//   });
