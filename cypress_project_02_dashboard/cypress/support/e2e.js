@@ -15,16 +15,17 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
+import './helper'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-// Cypress.on('window:before:unload', (options) => {
-//     const logs = options.get('logs');
-//     logs.forEach((log) => {
-//       if (log.displayName === 'xhr' || log.displayName === 'fetch') {
-//         log.hidden = true;
-//         console.log('Hidden:', log.hidden, log.displayName); // Check the value
-//       }
-//     });
-//   });
+// const app = window.top;
+// if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
+//   const style = app.document.createElement('style');
+//   style.innerHTML =
+//     '.command-name-request, .command-name-xhr { display: none }';
+//   style.setAttribute('data-hide-command-log-request', '');
+
+//   app.document.head.appendChild(style);
+// }

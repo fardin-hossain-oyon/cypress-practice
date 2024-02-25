@@ -55,11 +55,22 @@ export class GerDashboardPage{
         // cy.get('[id^=saw_][id$=_48]').select('Table');
         // cy.get('[id^=saw_][id$=_55]').select('Table');
 
+        let total_table_count = 3;
+
         cy.get('[id^=saw_]')
         .filter('.VSelDropDown')
         .each($el => {
             // Check if applying select makes sense in this context
             cy.wrap($el).select('Table'); // Apply select to each element
+
+            cy.get('[id^=saw_]')
+            .filter('.PivotContainer')
+            .should('have.length', total_table_count + 1);
+
+            total_table_count = total_table_count + 1;
+
+            cy.log('Total table count = ', total_table_count);
+
           });
     }
 

@@ -26,16 +26,16 @@ Cypress.on('uncaught:exception', (err, runnable) => {
 //     });
 //   });
 
-Cypress.on('log:changed', (log) => {
+// Cypress.on('log:changed', (log) => {
 
-  if (
-    log.displayName === 'xhr' 
-  // || 
-  // log.displayName === 'fetch'
-  ) {
-    return; // Prevent the log from being displayed
-  }
-});
+//   if (
+//     log.displayName === 'xhr' 
+//   // || 
+//   // log.displayName === 'fetch'
+//   ) {
+//     return; // Prevent the log from being displayed
+//   }
+// });
 
 
 
@@ -43,9 +43,9 @@ Cypress.on('log:changed', (log) => {
 
 describe('OAS Demo', () => {
 
-  // beforeEach('before each', function(){
-  //   cy.intercept({ resourceType: /xhr|fetch/ }, { log: false })
-  // })
+  beforeEach('before each', function(){
+    cy.intercept({ resourceType: /xhr|fetch/ }, { log: false })
+  })
 
   it('Testing GER Dashboard', () => {
 

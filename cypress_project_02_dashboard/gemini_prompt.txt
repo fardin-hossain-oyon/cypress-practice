@@ -1,0 +1,18 @@
+look at the following code:
+
+cy.get('[id^=saw_]')
+        .filter('.VSelDropDown')
+        .each($el => {
+            cy.wrap($el).select('Table'); // Apply select to each element
+          });
+
+Now, every VSelDropDown is in a <tr>. I want to go to the previous <tr> element, that exists in one step above the <tr> element containing the VSelDropDown. For example, if the structure is like this:
+
+<tr> ..... <tr> ... <select class="VSelDropDown" ... > ... </tr> ... </tr>
+
+I want to go to the first <tr>
+
+Then I want to check if this <tr> contains any ViewContainer element with an attribute named viewType having value 'pivotTableView'.
+As long as there is no such element, the program should wait.
+
+How can I do this?
