@@ -24,23 +24,15 @@ export class CaseManagementDashboardPage {
 
     change_view_analytics() {
 
-        // cy.get('[id^=saw_][id$=_26]').click();
-        // cy.get('[id^=saw_][id$=_2a]').select('Table');
-        // cy.get('[id^=saw_][id$=_2a]').select('Table');
-        // cy.get('[id^=saw_][id$=_30]').select('Table');
-        // cy.get('[id^=saw_][id$=_36]').select('Table');
-        // cy.get('[id^=saw_][id$=_3c]').select('Table');
-        // cy.get('[id^=saw_][id$=_42]').select('Table');
-        // cy.get('[id^=saw_][id$=_48]').select('Table');
-        // cy.get('[id^=saw_][id$=_55]').select('Table');
-
         cy.get('[id^=saw_]')
             .filter('.VSelDropDown')
             .each($el => {
                 cy.wrap($el).select('Pivot Table');
-                cy.wait(1000);
+                
+                cy.wrap($el).parent().closest('.CVFormatTable').then($table => {
+                    cy.wrap($table).find('.ViewContainer[viewType="tableView"], .ViewContainer[viewType="pivotTableView"]').should('be.visible');
+                  });
             });
-
 
     }
 

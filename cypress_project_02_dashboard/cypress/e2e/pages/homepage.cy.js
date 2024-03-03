@@ -22,4 +22,14 @@ export class HomePage{
         cy.get('[aria-label="Case Management Dashboard for Oversight"]').click();
     }
 
+    select_demographic_dashboard(){
+        cy.get('#dashboard > .HeaderMenuBarText > span').click();
+        cy.get('[aria-label="Demographic Dashboard for Oversight"]').click();
+    }
+
+    select_employment_history_dashboard(){
+        cy.get('#dashboard > .HeaderMenuBarText > span').click();
+        cy.get('[aria-label="Employment History Dashboard for Oversight"]').click();
+    }
+
 }

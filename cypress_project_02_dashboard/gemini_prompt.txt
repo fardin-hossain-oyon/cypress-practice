@@ -16,3 +16,38 @@ Then I want to check if this <tr> contains any ViewContainer element with an att
 As long as there is no such element, the program should wait.
 
 How can I do this?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+look at the following code:
+
+cy.get('[id^=saw_]')
+        .filter('.VSelDropDown')
+        .each($el => {
+            cy.wrap($el).select('Table'); // Apply select to each element
+          });
+
+Now, after selecting 'Table', I want my program to wait as long as there is no element of 'ViewContainer' class having an attribute 'viewType' that holds a value 'pivotTableView' in the first parent <table class="CVTable"> element. What I mean is, after selecting the 'Table' view, the program will find the first parent <table class="CVTable"> element, then check if any <div class="ViewContainer" ... viewType="pivotTableView"> element exists in any of the descendants, if not found, then the program will wait.
+
+How can I do this?
+
+
+
+
+
+
+
+
+
