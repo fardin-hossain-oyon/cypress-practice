@@ -13,35 +13,24 @@ export class GerDashboardPage{
 
     apply_button_locator = '#gobtn'
 
-    changeAggregationType(aggregationType){
-
-        if(aggregationType === "yearly"){
-            cy.get(this.yearly_radio_locator).click();
-        }
-        else{
-            // cy.get(this.monthly_radio_locator).click();
-            cy.contains('Monthly').click();
-        }
-    }
+    
 
     changeFromDateAndToDate(){
-        // cy.get(this.from_date_dropdown_locator).click();
-        // cy.get(this.from_date_option_locator).click();
-
-        // cy.get(this.to_date_dropdown_locator).click();
-        // cy.get(this.to_date_option_locator).click();
-
-        // cy.get('#saw_821299_7_1').scrollIntoView().click();
-        // cy.contains('/01/').click({ force: true });
-        // cy.get('#saw_821299_7_1', {timeout:10000}).click();
-
-        // cy.get('#saw_829341_7_1_dropdownIcon', {timeout:20000}).click();
-
-        // cy.contains('04/01/2020', {timeout:20000}).click();
-        // cy.get('[title="06/01/2020"]').click();
-        // cy.get('[id^=saw_][id$=_dropdownIcon]').click();
 
     }
+
+    change_aggregation_type(){
+        cy.contains('Monthly').click();
+
+        cy.get('body').should(($body) => {
+            expect($body.attr('style')).to.include('cursor: wait;');
+          });
+
+        cy.get('body').should(($body) => {
+            expect($body.attr('style')).to.not.include('cursor: wait;');
+          });
+    }
+
 
     change_view_analytics(){
 
