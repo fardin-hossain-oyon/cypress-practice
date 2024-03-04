@@ -29,18 +29,27 @@ export class GerDashboardPage{
         cy.get('body').should(($body) => {
             expect($body.attr('style')).to.not.include('cursor: wait;');
           });
+
+        // cy.get('body').should(($body) => {
+        //     expect($body.attr('style'), {timeout : 30000}).to.not.include('cursor: wait;');
+        //   });
+
+        // cy.get('body').should(($body) => {
+        //     expect($body.attr('style'),{timeout : 30000}).to.include('cursor: wait;');
+        //   });
+
+        cy.get('.ProgressIndicatorDiv', {timeout : 300000}).should('not.exist');
     }
 
 
     change_view_analytics(){
 
-        cy.get('[id^=saw_]')
-        .filter('.VSelDropDown')
+        cy.get('.VSelDropDown')
         .each($el => {
             cy.wrap($el).select('Table');
 
             cy.wrap($el).parent().closest('.CVFormatTable').then($table => {
-                cy.wrap($table).find('.ViewContainer[viewType="tableView"], .ViewContainer[viewType="pivotTableView"]').should('be.visible');
+                cy.wrap($table).find('.ViewContainer[viewType="tableView"], .ViewContainer[viewType="pivotTableView"]', {timeout : 300000 }).should('exist', {timeout : 300000 });
               });
 
           });

@@ -65,7 +65,9 @@ describe('OAS Demo', () => {
 
     // gerDashboardPage.changeAggregationType(aggregationType);
 
-    cy.wait(3000);
+    // cy.wait(3000);
+
+    cy.get('.ProgressIndicatorDiv', {timeout : 300000}).should('not.exist');
 
     // gerDashboardPage.changeFromDateAndToDate();
 
@@ -76,8 +78,8 @@ describe('OAS Demo', () => {
 
     // cy.wait(1000);
 
-    // gerDashboardPage.change_view_analytics();
-    evvDashboardPage.change_view_analytics();
+    gerDashboardPage.change_view_analytics();
+    // evvDashboardPage.change_view_analytics();
     // caseManagementDashboardPage.change_view_analytics();
     // demographicDashboardPage.change_view_analytics();
     // employmentHistoryDashboardPage.change_view_analytics(); 
@@ -93,11 +95,13 @@ describe('OAS Demo', () => {
 
       evvDashboardPage.change_subtab(subtab_string);
 
-      cy.wait(2000);
+      // cy.wait(2000);
 
-      evvDashboardPage.change_aggregation_type();
+      cy.get('.ProgressIndicatorDiv', {timeout : 300000}).should('not.exist');
 
-      evvDashboardPage.change_view_analytics();
+      gerDashboardPage.change_aggregation_type();
+
+      gerDashboardPage.change_view_analytics();
     }
 
   })

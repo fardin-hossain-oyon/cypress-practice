@@ -48,6 +48,17 @@ How can I do this?
 
 
 
+Look at the following code:
+
+cy.get('body', {timeout : 30000}).should(($body) => {
+            expect($body.attr('style')).to.include('cursor: wait;', {timeout:30000});
+          }, {timeout:30000});
+
+
+I gave timeout 30000 in multiple places but it is not working, the code checks for default timeout of 4000 milliseconds. How do I fix this?
+
+
+
 
 
 

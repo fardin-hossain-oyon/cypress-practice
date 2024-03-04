@@ -12,6 +12,8 @@ export class EvvDashboardPage{
         cy.get('body').should(($body) => {
             expect($body.attr('style')).to.not.include('cursor: wait;');
           });
+
+        cy.get('.ProgressIndicatorDiv', {timeout : 30000}).should('not.exist');
     }
 
     change_view_analytics(){
@@ -23,7 +25,7 @@ export class EvvDashboardPage{
             cy.wrap($el).select('Table'); 
 
             cy.wrap($el).parent().closest('.CVFormatTable').then($table => {
-                cy.wrap($table).find('.ViewContainer[viewType="tableView"], .ViewContainer[viewType="pivotTableView"]', {timeout: 120000}).should('exist');
+                cy.wrap($table).find('.ViewContainer[viewType="tableView"], .ViewContainer[viewType="pivotTableView"]', {timeout: 30000}).should('exist');
               });
           });
     }

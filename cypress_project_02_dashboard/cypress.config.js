@@ -10,5 +10,6 @@ module.exports = defineConfig({
       //   return launchOptions;
       // });
     },
+    defaultCommandTimeout : 60000
   },
 });
