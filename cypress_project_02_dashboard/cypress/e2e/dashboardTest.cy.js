@@ -73,6 +73,9 @@ describe('OAS Demo', () => {
 
     // evvDashboardPage.change_aggregation_type();
     gerDashboardPage.change_aggregation_type();
+    // caseManagementDashboardPage.change_aggregation_type();
+    // demographicDashboardPage.change_aggregation_type();
+    // employmentHistoryDashboardPage.change_aggregation_type();
 
 
 
@@ -93,15 +96,29 @@ describe('OAS Demo', () => {
 
       let subtab_string = '#dashboard_subpage_' + i + '_tab > tbody > tr > td > div';
 
-      evvDashboardPage.change_subtab(subtab_string);
+      // evvDashboardPage.change_subtab(subtab_string);
+      gerDashboardPage.change_subtab(subtab_string);
+      // caseManagementDashboardPage.change_subtab(subtab_string);
+      // demographicDashboardPage.change_subtab(subtab_string);
+      // employmentHistoryDashboardPage.change_subtab(subtab_string);
 
-      // cy.wait(2000);
+      cy.get('body').should(($body) => {
+        expect($body.attr('style')).to.not.include('cursor: wait;');
+      });
 
       cy.get('.ProgressIndicatorDiv', {timeout : 300000}).should('not.exist');
 
+      // evvDashboardPage.change_aggregation_type();
       gerDashboardPage.change_aggregation_type();
+      // caseManagementDashboardPage.change_aggregation_type();
+      // demographicDashboardPage.change_aggregation_type();
+      // employmentHistoryDashboardPage.change_aggregation_type();
 
+      // evvDashboardPage.change_view_analytics();
       gerDashboardPage.change_view_analytics();
+      // caseManagementDashboardPage.change_view_analytics();
+      // demographicDashboardPage.change_view_analytics();
+      // employmentHistoryDashboardPage.change_view_analytics();
     }
 
   })

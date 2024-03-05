@@ -4,36 +4,38 @@ export class CaseManagementDashboardPage {
 
 
     changeFromDateAndToDate() {
-        // cy.get(this.from_date_dropdown_locator).click();
-        // cy.get(this.from_date_option_locator).click();
 
-        // cy.get(this.to_date_dropdown_locator).click();
-        // cy.get(this.to_date_option_locator).click();
+    }
 
-        // cy.get('#saw_821299_7_1').scrollIntoView().click();
-        // cy.contains('/01/').click({ force: true });
-        // cy.get('#saw_821299_7_1', {timeout:10000}).click();
+    change_aggregation_type(){
+        cy.contains('Monthly').click();
 
-        // cy.get('#saw_829341_7_1_dropdownIcon', {timeout:20000}).click();
+        cy.get('body').should(($body) => {
+            expect($body.attr('style')).to.include('cursor: wait;');
+          });
 
-        // cy.contains('04/01/2020', {timeout:20000}).click();
-        // cy.get('[title="06/01/2020"]').click();
-        // cy.get('[id^=saw_][id$=_dropdownIcon]').click();
+        cy.get('body').should(($body) => {
+            expect($body.attr('style')).to.not.include('cursor: wait;');
+          });
 
+        cy.get('.ProgressIndicatorDiv', {timeout : 300000}).should('not.exist');
     }
 
     change_view_analytics() {
 
-        cy.get('[id^=saw_]')
-            .filter('.VSelDropDown')
+        cy.get('.VSelDropDown')
             .each($el => {
                 cy.wrap($el).select('Pivot Table');
                 
                 cy.wrap($el).parent().closest('.CVFormatTable').then($table => {
-                    cy.wrap($table).find('.ViewContainer[viewType="tableView"], .ViewContainer[viewType="pivotTableView"]').should('be.visible');
+                    cy.wrap($table).find('.ViewContainer[viewType="tableView"], .ViewContainer[viewType="pivotTableView"]', {timeout : 300000 }).should('exist', {timeout : 300000 });
                   });
             });
 
+    }
+
+    change_subtab(subtab_string){
+        cy.get(subtab_string).click();
     }
 
 }
