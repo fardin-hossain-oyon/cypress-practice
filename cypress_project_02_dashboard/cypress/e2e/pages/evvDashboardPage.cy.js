@@ -13,6 +13,21 @@ export class EvvDashboardPage{
             expect($body.attr('style')).to.not.include('cursor: wait;');
           });
 
+        const checkStability = () => {
+        cy.get('body').then(($body) => {
+            const initialHtml = $body.html();
+            cy.wait(500, {log : false}); // Adjust wait time as needed
+            cy.get('body').then(($updatedBody) => {
+                const updatedHtml = $updatedBody.html();
+                if (initialHtml !== updatedHtml) {
+                    checkStability();
+                }
+            });
+        });
+        };
+
+        checkStability();
+
         cy.get('.ProgressIndicatorDiv', {timeout : 30000}).should('not.exist');
     }
 

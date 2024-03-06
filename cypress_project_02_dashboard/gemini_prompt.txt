@@ -61,4 +61,48 @@ I gave timeout 30000 in multiple places but it is not working, the code checks f
 
 
 
+Look at the following code:
+
+cy.get('.VSelDropDown')
+        .each($el => {
+            cy.wrap($el).select('Table');
+
+            cy.get('.ProgressIndicatorDiv', {timeout : 300000}).should('not.exist');
+
+            cy.wrap($el).parent().closest('.CVFormatTable').then($table => {
+                cy.wrap($table).find('.ViewContainer[viewType="tableView"], .ViewContainer[viewType="pivotTableView"]', {timeout : 300000 }).should('exist', {timeout : 300000 });
+            });
+
+          });
+
+Now, I want to execute this code only if table is not already selected. The VSelDropDown class is a <select> element that contains several <option> element and the option that is already selected has a 'selected' attribute.
+
+For example, <option value="pivotTableView!1">Table</option> <option value="dvtchart!2" selected="">Bar Chart</option>
+
+How can I do this?
+
+
+
+
+
+Look at my following code:
+
+cy.contains('Monthly').click();
+
+cy.get('body'). as('htmlBody');
+cy.get('@htmlBody').should(($body) => {
+    expect($body.attr('style')).to.include('cursor: wait;');
+});
+
+cy.get('body'). as('htmlBody');
+cy.get('@htmlBody').should(($body) => {
+    expect($body.attr('style')).to.not.include('cursor: wait;');
+});
+
+
+After I click on the Monthly radio button, my code expects a cursor wait, then expects it to disappear. But the problem is, in my webpage, the cursor wait appears and disappears multiple times and I donot know how many times it will do it. After a few seconds, the cursor wait no longer appears and the page is stable. Now how can I make my code wait for the page to be stable?
+
+
+
+
 
