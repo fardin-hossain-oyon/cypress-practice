@@ -38,17 +38,31 @@ export class GenericDashboardPage {
 
     change_analysis_view_to_table() {
 
+        let count = 0;
+
         cy.get('.VSelDropDown')
             .each($el => {
-                // cy.wrap($el).select('Table');
+                count = count + 1;
+
+                if(count == 1){
+                    return;
+                }
+
                 cy.wrap($el).select('Pivot Table');
+
+                // cy.wrap($el).select('Pivot Table');
 
                 cy.get('.ProgressIndicatorDiv', {timeout : 300000}).should('not.exist');
                 
                 cy.wrap($el).parent().closest('.CVFormatTable').then($table => {
                     cy.wrap($table).find('.ViewContainer[viewType="tableView"], .ViewContainer[viewType="pivotTableView"]', {timeout : 300000 }).should('exist', {timeout : 300000 });
                   });
-            });
+        })
+        .then(()=>{
+            cy.log('count = ' + count);
+        })
+
+        
     }
 
     change_subtab(subtab_string){

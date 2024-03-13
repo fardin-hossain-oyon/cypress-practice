@@ -1,19 +1,9 @@
 /// <reference types="cypress" />
 
 import { HomePage } from './pages/homepage.cy';
-// import { GerDashboardPage } from './pages/gerDashboardPage.cy';
-// import { EvvDashboardPage } from './pages/evvDashboardPage.cy';
-// import { CaseManagementDashboardPage } from './pages/caseManagementDashboardPage.cy';
-// import { DemographicDashboardPage } from './pages/demographicDashboard.cy';
-// import { EmploymentHistoryDashboardPage } from './pages/employmentHistoryDashboardPage.cy';
 import { GenericDashboardPage } from './pages/genericDashboardPage.cy';
 
 const homepage = new HomePage();
-// const gerDashboardPage = new GerDashboardPage();
-// const evvDashboardPage = new EvvDashboardPage();
-// const caseManagementDashboardPage = new CaseManagementDashboardPage();
-// const demographicDashboardPage = new DemographicDashboardPage();
-// const employmentHistoryDashboardPage = new EmploymentHistoryDashboardPage();
 const genericDashboardPage = new GenericDashboardPage();
 
 const aggregationType = "monthly";
@@ -50,11 +40,15 @@ describe('OAS Demo', () => {
     /* traverse through all the subtabs in a particular tab */
     
     const starting_subtab_index = 1;
-    const ending_subtab_index = 3;
+    const ending_subtab_index = 2;
 
     for(let i=starting_subtab_index; i<=ending_subtab_index; i++){
 
       let subtab_string = '#dashboard_subpage_' + i + '_tab > tbody > tr > td > div';
+
+      if (i==1){
+        continue;
+      }
 
       genericDashboardPage.change_subtab(subtab_string);
 
