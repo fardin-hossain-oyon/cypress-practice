@@ -105,26 +105,4 @@ After I click on the Monthly radio button, my code expects a cursor wait, then e
 
 
 
-I want to turn of loggingg of xhr and fetch request in my cypress test. I am trying 2 approaches:
-
-Approach 1: (added the following code snippet in my test.cy.js file)
-
-beforeEach('before each', function(){
-    cy.intercept({ resourceType: /xhr|fetch/ }, { log: false })
-  })
-
-Approach 2: (added the following code snippet in my e2e.js file)
-
-const app = window.top;
-if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
-  const style = app.document.createElement('style');
-  style.innerHTML =
-    '.command-name-request, .command-name-xhr { display: none }';
-  style.setAttribute('data-hide-command-log-request', '');
-
-  app.document.head.appendChild(style);
-}
-
-Can you tell me which of these approaches is the better one? What exactly is the difference between these 2 approaches?
-
 
