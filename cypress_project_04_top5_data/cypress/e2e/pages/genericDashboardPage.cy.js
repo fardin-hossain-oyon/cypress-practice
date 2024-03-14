@@ -38,35 +38,69 @@ export class GenericDashboardPage {
 
     change_analysis_view_to_table() {
 
-        let count = 0;
-
         cy.get('.VSelDropDown')
             .each($el => {
-                count = count + 1;
 
-                // if(count == 1){
-                //     return;
-                // }
-
-                cy.wrap($el).select('Pivot Table');
+                cy.wrap($el).select('Table');
 
                 // cy.wrap($el).select('Pivot Table');
 
                 cy.get('.ProgressIndicatorDiv', {timeout : 300000}).should('not.exist');
+
+                cy.get('body').should(($body) => {
+                    expect($body.attr('style')).to.not.include('cursor: wait;');
+                  });
                 
                 cy.wrap($el).parent().closest('.CVFormatTable').then($table => {
                     cy.wrap($table).find('.ViewContainer[viewType="tableView"], .ViewContainer[viewType="pivotTableView"]', {timeout : 300000 }).should('exist', {timeout : 300000 });
                   });
-        })
-        .then(()=>{
-            cy.log('count = ' + count);
-        })
+        });
 
         
     }
 
     change_subtab(subtab_string){
         cy.get(subtab_string).click();
+    }
+
+    find_top_five_data(){
+
+        let parentIds = [];
+        let number_values = [];
+
+        cy.get('.PTChildPivotTable')
+        .each($el => {
+            cy.wrap($el).find('.PTL').each($childEl => {
+                const childText = $childEl.text();
+
+                if (!/[a-zA-Z%]/.test(childText) && childText.trim() != ''){
+
+                    const parentElement = $childEl.parent(); // Get the parent element
+                    const parentId = parentElement.attr('id'); // Extract the parent's ID
+                    parentIds.push(parentId);
+                    number_values.push(childText);
+                }
+              })
+        })
+        .then(()=>{
+
+            const sortedData = number_values.map((num, index) => ({
+                number: parseInt(num.replace(',', ''), 10),
+                parentId: parentIds[index],
+              })).sort((a, b) => {
+                if (a.number !== b.number) {
+                  return b.number - a.number;
+                }
+                return a.parentId.localeCompare(b.parentId);
+              });
+              
+              const sortedNumbers = sortedData.map(item => item.number);
+              const sortedParentIds = sortedData.map(item => item.parentId);
+              
+              cy.log(sortedNumbers);
+              cy.log(sortedParentIds);
+
+        });
     }
 
 }
