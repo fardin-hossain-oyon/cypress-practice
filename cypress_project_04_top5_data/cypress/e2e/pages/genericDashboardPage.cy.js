@@ -84,8 +84,6 @@ export class GenericDashboardPage {
 
                     const parentElement = $childEl.parent(); // Get the parent element
                     const parentId = parentElement.attr('id'); // Extract the parent's ID
-                    // parentIds.push(parentId);
-                    // number_values.push(childText);
                     parentIds_in_particular_table.push(parentId);
                     number_values_in_particular_table.push(childText);
                     index_values_in_particular_table.push(index);
@@ -115,12 +113,6 @@ export class GenericDashboardPage {
                 parentIds.push(sortedParentIds);
                 number_values.push(sortedNumbers);
                 index_values.push(sortedIndices);
-
-                // for(let i = 0; i<5; i++){
-                //     cy.wrap($el).get('.PTL').eq(sortedIndices[i]).click();
-                //     cy.get('.ProgressIndicatorDiv', {timeout : 300000}).should('not.exist');
-                //     cy.get('.masterBreadCrumbItem').click();
-                // }
             })
         })
         .then(()=>{
